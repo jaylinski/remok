@@ -1,0 +1,24 @@
+{
+  "time": "2017-12-11T19:54:58.822Z",
+  "request": {
+    "_hash": "reqHashValue",
+    "method": "GET",
+    "path": "/foo/bar",
+    "headers": {
+      "key": "value"
+    },
+    "query": null,
+    "body": null
+  },
+  "response": {
+    "_hash": "resHashValue",
+    "status": {
+      "code": 201,
+      "message": "custom status message"
+    },
+    "headers": {
+      "key": "value"
+    },
+    "body": "I'm the response body!"
+  }
+}

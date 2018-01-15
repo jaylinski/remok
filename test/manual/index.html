@@ -1,0 +1,124 @@
+<html>
+<head>
+	<title>Remok Test Frontend</title>
+  <meta charset="UTF-8">
+	<style type="text/css">
+		html {
+			font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+		}
+		button {
+			width: 100%;
+			text-align: left;
+			padding: 2px 10px;
+		}
+		table th,
+		table td {
+			padding: 4px 8px;
+			background-color: #ddd;
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+<main>
+	<h1>Tests</h1>
+  <p>Manual test suite for Remok.</p>
+  <h3>Setup</h3>
+  <pre>
+    <code>$ node test/manual/api.js</code>
+    <code>$ node test/manual/remok.js</code>
+  </pre>
+	<table>
+		<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>xhr</th>
+			<th>fetch</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<th><code>GET</code></th>
+      <td><code>/</code></td>
+			<td><button data-test data-method="GET" data-api="xhr">Send</button></td>
+			<td><button data-test data-method="GET" data-api="fetch">Send</button></td>
+      <td></td>
+		</tr>
+    <tr>
+      <th><code>GET</code></th>
+      <td><code>/foo</code></td>
+      <td><button data-test data-method="GET" data-path="/foo" data-api="xhr">Send</button></td>
+      <td><button data-test data-method="GET" data-path="/foo" data-api="fetch">Send</button></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th><code>GET</code></th>
+      <td><code>/foo/bar</code></td>
+      <td><button data-test data-method="GET" data-path="/foo/bar" data-api="xhr">Send</button></td>
+      <td><button data-test data-method="GET" data-path="/foo/bar" data-api="fetch">Send</button></td>
+      <td></td>
+    </tr>
+		<tr>
+			<th><code>POST</code></th>
+			<td><code>/</code></td>
+			<td><button data-test data-method="POST" data-api="xhr">Send</button></td>
+			<td><button data-test data-method="POST" data-api="fetch">Send</button></td>
+      <td>Returns a different response on every request!</td>
+		</tr>
+		<tr>
+			<th><code>PATCH</code></th>
+      <td><code>/</code></td>
+			<td><button data-test data-method="PATCH" data-api="xhr">Send</button></td>
+			<td><button data-test data-method="PATCH" data-api="fetch">Send</button></td>
+      <td>Sends a <code>OPTIONS</code> request!</td>
+		</tr>
+		</tbody>
+	</table>
+</main>
+<script>
+  const remok = true;
+  const port = remok ? 3000 : 8080;
+  const url = (path = '/') => `http://localhost:${port}${path}?param=value`;
+
+  function executeFetch(method, path, body) {
+    fetch(url(path), { method, body, mode: 'cors' }).then(function (response) {
+      return response.text();
+    }).then(function(returnedValue) {
+	    console.log(returnedValue);
+    });
+  }
+
+  function executeXhr(method, path, body) {
+    const oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', () => {
+      if (oReq.readyState === oReq.DONE) {
+        console.log(oReq.responseText);
+      }
+	  });
+    oReq.open(method, url(path));
+    oReq.send(body);
+  }
+
+  const tests = document.querySelectorAll('button[data-test]');
+  tests.forEach((node) => {
+    const method = node.dataset.method;
+    const path = node.dataset.path;
+    const api = node.dataset.api;
+    const body = method === 'POST' ? 'payload' : null;
+
+    node.addEventListener('click', () => {
+      switch (api) {
+        case 'xhr':
+          executeXhr(method, path, body);
+          break;
+        case 'fetch':
+          executeFetch(method, path, body);
+          break;
+      }
+	  });
+  });
+</script>
+</body>
+</html>

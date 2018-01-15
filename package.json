@@ -1,0 +1,56 @@
+{
+  "name": "remok",
+  "version": "0.1.0",
+  "description": "A simple record and replay capable mock server.",
+  "license": "MIT",
+  "keywords": [
+    "mock",
+    "remok"
+  ],
+  "bin": "./bin/remok.js",
+  "main": "./dist/remok.js",
+  "module": "./src/index.js",
+  "files": [
+    "LICENSE",
+    "readme.md",
+    "bin/",
+    "dist/",
+    "src/"
+  ],
+  "@std/esm": {
+    "cjs": true,
+    "esm": "js"
+  },
+  "scripts": {
+    "build:main": "rollup ./src/index.js --output.format cjs --output.file ./dist/remok.js",
+    "build:utils:hash": "rollup ./src/utils/hash.js --output.format cjs --output.file ./dist/hash.js",
+    "build": "npm run build:main && npm run build:utils:hash",
+    "format": "prettier --write \"./*(bin|src|test)/**/*.js\"",
+    "test": "jest"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "make-dir": "^1.1.0"
+  },
+  "devDependencies": {
+    "@std/esm": "^0.19.1",
+    "jest": "^22.1.1",
+    "prettier": "^1.10.2",
+    "rollup": "^0.53.4"
+  },
+  "jest": {
+    "roots": [
+      "src"
+    ],
+    "testEnvironment": "node"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "engines": {
+    "node": ">=8.9"
+  }
+}
