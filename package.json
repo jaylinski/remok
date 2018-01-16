@@ -1,6 +1,6 @@
 {
   "name": "remok",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/jaylinski/remok",
   "description": "A simple record and replay capable mock server.",
   "license": "MIT",
@@ -14,6 +14,7 @@
   "files": [
     "LICENSE",
     "readme.md",
+    "readme.graph.png",
     "bin/",
     "dist/",
     "src/"
