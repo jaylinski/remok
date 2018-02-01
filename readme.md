@@ -217,6 +217,7 @@ remok({
 
 * Middlewares
 * History mode
+* Record proxy response time
 
 ## License
 
