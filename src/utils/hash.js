@@ -4,5 +4,5 @@ export default (data) => {
   const hash = crypto.createHash('sha256');
   hash.update(JSON.stringify(data));
 
-  return hash.digest('hex');
+  return hash.digest('hex').substring(0, 8);;
 };
