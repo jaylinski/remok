@@ -95,6 +95,7 @@ The following fields are required in a mock file:
   },
   "response": {
     "_hash": "responsehashvalue",
+    "_time": null,
     "status": {
       "code": 201,
       "message": "custom status message"
@@ -130,17 +131,17 @@ Creates the Remok application.
 | Property         | Type       | Default            | Description                              |
 | ---------------- | ---------- | ------------------ | ---------------------------------------- |
 | `verbose`        | `boolean`  | `true`             | Makes output more or less verbose        |
-| `server`         | `object`   |                    | Remok server configuration               |
+|                  |            |                    |                                          |
 | `server.port`    | `number`   | `3000`             | Server port                              |
 | `server.host`    | `string`   | `localhost`        | Server host                              |
-| `mocks`          | `object`   |                    | Mock configuration                       |
+|                  |            |                    |                                          |
 | `mocks.record`   | `mixed`    | `true`             | Whether to record mocks. Setting this option to `overwrite` will overwrite existing mocks. |
 | `mocks.path`     | `string`   | `./remok`          | Path used for storing recorded mocks     |
 | `mocks.history`🚧 | `boolean`  | `false`            | Use the history mode                     |
 | `mocks.watch`    | `boolean`  | `false`            | Reloads all mocks on every request. Useful for developing with manual mocks. |
 | `mocks.reqHash`  | `function` |                    | Callback; receives a `Request` object, should return a request hash |
 | `mocks.resHash`  | `function` |                    | Callback; receives a `HttpResponse` object, Should return a response hash |
-| `proxy`          | `object`   |                    | Proxy configuration                      |
+|                  |            |                    |                                          |
 | `proxy.target`   | `string`   | `http://localhost` | The proxy target                         |
 | `proxy.timeout`  | `number`   | `5000`             | Proxy request timeout in milliseconds    |
 

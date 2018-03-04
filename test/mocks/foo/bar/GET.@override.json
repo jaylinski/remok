@@ -12,6 +12,7 @@
   },
   "response": {
     "_hash": "resHashValue",
+    "_time": null,
     "status": {
       "code": 201,
       "message": "custom status message"

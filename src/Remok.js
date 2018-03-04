@@ -39,7 +39,7 @@ export default class Remok {
 
     try {
       const { Response, mockPath } = await this.MockRepository.findByRequest(Request);
-      // TODO always check proxy response (proxy target could return different responses on identical requests)
+      // TODO Always check proxy response (proxy target could return different responses on identical requests)
       if (this.overwriteMocks()) throw `Overwriting existing mock "${mockPath}"`;
       Print.success(`Responding with existing mock "${mockPath}"`);
       return Response;

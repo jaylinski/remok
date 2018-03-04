@@ -26,6 +26,7 @@ function getMockTemplate() {
   },
   "response": {
     "_hash": "responsehashvalue",
+    "_time": null,
     "status": {
       "code": 201,
       "message": "custom status message"

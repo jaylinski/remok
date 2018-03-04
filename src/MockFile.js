@@ -30,12 +30,14 @@ export default class MockFile {
    */
   getRequestHash() {
     const file = path.parse(this.filePath);
+    const requestHashStart = file.base.indexOf('.') + 1;
+    const requestHashEnd = file.base.indexOf('.', requestHashStart);
 
-    return file.name.substr(file.name.indexOf('.') + 1, 9);
+    return file.base.substr(requestHashStart, requestHashEnd - requestHashStart);
   }
 
   /**
-   * Get te file key from the file path.
+   * Get the file key from the file path.
    *
    * This function has to be in sync with the `Repository.getFileKeyByRequest()` method!
    *

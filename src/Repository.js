@@ -29,6 +29,8 @@ export default class Repository {
    * @returns {array}
    */
   readMocks() {
+    this.mocks.clear();
+
     scandir(this.directory).forEach((filePath) => {
       this.addMock(new MockFile(path.relative(this.directory, filePath)));
     });
@@ -54,7 +56,7 @@ export default class Repository {
     if (this.watch) this.readMocks();
 
     const keyRequest = this.getFileKeyByRequest(Request);
-    const keyOverride = `${keyRequest.slice(0, -9)}${KEY_OVERRIDE}`;
+    const keyOverride = `${keyRequest.slice(0, keyRequest.lastIndexOf('.') + 1 - keyRequest.length)}${KEY_OVERRIDE}`;
     const key = this.mocks.has(keyOverride) ? keyOverride : keyRequest;
 
     return new Promise((resolve, reject) => {
@@ -131,7 +133,7 @@ export default class Repository {
   getFileKeyByRequest(Request) {
     const requestUrl = url.parse(Request.url, true);
     const requestDirectory = path.normalize(`${path.sep}${requestUrl.pathname}`).replace(RTRIM_SLASH, '');
-    const requestHash = this.hash.request(Request).substring(0, 9);
+    const requestHash = this.hash.request(Request);
 
     return `${requestDirectory}${path.sep}${Request.method}.${requestHash}`;
   }

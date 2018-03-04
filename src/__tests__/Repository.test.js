@@ -23,7 +23,7 @@ describe('Repository', () => {
     fs.unlinkSync(`${directory}${path.sep}GET.reqHashValue.resHashValue.json`);
   });
 
-  test('It finds a mock by a request', async () => {
+  test('It finds a manual mock by a request', async () => {
     const { Response, mockPath } = await RepositoryObj.findByRequest({
       method: 'GET',
       url: '/foo/bar',

@@ -19,6 +19,7 @@ describe('Response', () => {
     const ResponseObj = new HttpResponse(httpIncomingMessage, 'response body');
     expect(ResponseObj).toEqual({
       _hash: null,
+      _time: null,
       body: 'response body',
       headers: {
         foo: 'bar',

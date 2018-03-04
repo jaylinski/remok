@@ -35,6 +35,7 @@ export default class Proxy {
     delete requestOptions.headers['accept-encoding'];
 
     return new Promise((resolve, reject) => {
+      // TODO (P3 Planned Feature) Record request time.
       const clientRequest = protocol.request(requestOptions, (response) => {
         let data = [];
 

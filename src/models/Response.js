@@ -3,6 +3,7 @@ import fs from 'fs';
 class Response {
   constructor() {
     this._hash = null;
+    this._time = null;
     this.status = {
       code: null,
       message: null,
