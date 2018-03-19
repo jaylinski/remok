@@ -1,5 +1,5 @@
 import colors from 'colors/safe';
-import { namespace } from './../config/defaults';
+import { namespace } from './../config';
 
 export default class Print {
   static debug(message) {

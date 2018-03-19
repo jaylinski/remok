@@ -2,7 +2,7 @@ import Remok from './Remok';
 import Server from './http/Server';
 import Proxy from './http/Proxy';
 import Repository from './Repository';
-import { defaultOptions, namespace } from './config/defaults';
+import { defaultOptions, namespace } from './config';
 
 /**
  * Builds the Remok object.
