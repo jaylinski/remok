@@ -222,4 +222,4 @@ remok({
 
 ## License
 
-Remok is licensed under the MIT License - see the `LICENSE` file for details.
+Remok is licensed under the MIT License - see the [LICENSE](https://github.com/jaylinski/remok/blob/master/LICENSE) file for details.
